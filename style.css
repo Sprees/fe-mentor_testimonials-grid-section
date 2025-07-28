@@ -1,0 +1,348 @@
+@font-face {
+    font-family: 'Barlow Semi Condensed Medium';
+    src: url('./assets/fonts/Barlow_Semi_Condensed/BarlowSemiCondensed-Medium.ttf')
+        format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Barlow Semi Condensed SemiBold';
+    src: url('./assets/fonts/Barlow_Semi_Condensed/BarlowSemiCondensed-SemiBold.ttf')
+        format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@layer reset {
+    /* https://piccalil.li/blog/a-more-modern-css-reset/ */
+    /* Box sizing rules */
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    /* Prevent font size inflation */
+    html {
+        -moz-text-size-adjust: none;
+        -webkit-text-size-adjust: none;
+        text-size-adjust: none;
+    }
+
+    /* Remove default margin in favour of better control in authored CSS */
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    p,
+    figure,
+    blockquote,
+    dl,
+    dd {
+        margin: 0;
+    }
+
+    /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+    ul[role='list'],
+    ol[role='list'] {
+        list-style: none;
+    }
+
+    /* Set core body defaults */
+    body {
+        min-height: 100vh;
+    }
+
+    /* Set shorter line heights on headings and interactive elements */
+    h1,
+    h2,
+    h3,
+    h4,
+    button,
+    input,
+    label {
+        line-height: 1.1;
+    }
+
+    /* Balance text wrapping on headings */
+    h1,
+    h2,
+    h3,
+    h4 {
+        text-wrap: balance;
+    }
+
+    p {
+        text-wrap: pretty;
+    }
+    /* A elements that don't have a class get default styles */
+    a:not([class]) {
+        text-decoration-skip-ink: auto;
+        color: currentColor;
+    }
+
+    /* Make images easier to work with */
+    img,
+    picture {
+        max-width: 100%;
+        display: block;
+    }
+
+    /* Inherit fonts for inputs and buttons */
+    input,
+    button,
+    textarea,
+    select {
+        font-family: inherit;
+        font-size: inherit;
+    }
+
+    /* Make sure textareas without a rows attribute are not tiny */
+    textarea:not([rows]) {
+        min-height: 10em;
+    }
+
+    /* Anything that has been anchored to should have extra scroll margin */
+    :target {
+        scroll-margin-block: 5ex;
+    }
+}
+
+@layer base {
+    :root {
+        --clr-primary-50: hsl(260, 100%, 95%);
+        --clr-primary-300: hsl(264, 82%, 80%);
+        --clr-primary-400: hsl(263, 55%, 52%);
+
+        --clr-secondary-400: 217, 19%, 35%;
+        --clr-secondary-500: hsl(219, 29%, 14%);
+
+        --clr-neutral-100: hsl(0, 0%, 100%);
+        --clr-neutral-150: hsl(300, 5%, 96%);
+        --clr-neutral-200: hsl(214, 17%, 92%);
+        --clr-neutral-300: hsl(0, 0%, 81%);
+        --clr-neutral-400: hsl(224, 10%, 45%);
+
+        --clr-black: hsl(0, 0%, 7%);
+        --clr-box-shadow: hsl(217, 19%, 35%);
+
+        --fs-300: 0.6875rem; /* 11px */
+        --fs-400: 0.8125rem; /* 13px */
+        --fs-700: 1.25rem; /* 20px */
+
+        --lh-110: 1.1;
+        --lh-120: 1.2;
+        --lh-140: 1.4;
+    }
+
+    body {
+        position: relative;
+        display: grid;
+        place-content: center;
+
+        font-family: 'Barlow Semi Condensed Medium';
+        font-size: var(--fs-400);
+
+        background-color: var(--clr-neutral-150);
+    }
+}
+
+@layer layout {
+    .testimonials-grid {
+        display: grid;
+        gap: 2rem;
+        grid-auto-columns: 1fr;
+        grid-template-areas:
+         'one'
+         'two'
+         'three'
+         'four'
+         'five';
+      
+
+        padding-block: 4rem;
+        margin-inline: auto;
+        width: min(85%, 70rem);
+
+        @media screen and (min-width: 33em) {
+            grid-template-areas:
+                'one one'
+                'two five'
+                'three five'
+                'four four';
+        }
+
+        @media screen and (min-width: 38em) {
+            grid-template-areas:
+                'one one'
+                'two three'
+                'four four'
+                'five five';
+        }
+
+        @media screen and (min-width: 54em) {
+            grid-template-areas:
+                'one one two'
+                'five five five'
+                'three four four';
+        }
+
+        @media screen and (min-width: 75em) {
+            grid-template-areas:
+                'one one two five'
+                'three four four five';
+        }
+    }
+}
+
+@layer components {
+    .testimonial {
+        padding: 2rem;
+        border-radius: 0.5rem;
+        box-shadow: 2.5rem 3.75rem 3.125rem -2.9375rem hsl(var(--clr-secondary-400), 0.25);
+
+        & img {
+            width: 1.75rem;
+            aspect-ratio: 1;
+            border-radius: 50%;
+        }
+
+        & .testimonial__name {
+            font-size: var(--fs-400);
+            font-weight: 500;
+            line-height: var(--lh-110);
+        }
+
+        & .testimonial__position {
+            margin-block-start: 0.25rem;
+            font-size: var(--fs-300);
+            line-height: var(--lh-110);
+        }
+
+        & > p {
+            font-family: 'Barlow Semi Condensed SemiBold', sans-serif;
+            font-size: var(--fs-700);
+            line-height: var(--lh-120);
+        }
+
+        & blockquote {
+            line-height: var(--lh-140);
+        }
+
+        &.quote {
+            background-image: url('./assets/images/bg-pattern-quotation.svg');
+            background-repeat: no-repeat;
+            background-position: top right 30%;
+            @media screen and (max-width: 33em) {
+                background-image: none;
+            }
+
+            @media screen and (min-width: 54em) {
+                background-position: top right 15%;
+            }
+        }
+
+        &:nth-child(1) {
+            grid-area: one;
+        }
+        &:nth-child(2) {
+            grid-area: two;
+        }
+        &:nth-child(3) {
+            grid-area: three;
+        }
+        &:nth-child(4) {
+            grid-area: four;
+        }
+        &:nth-child(5) {
+            grid-area: five;
+        }
+    }
+
+    .attribution {
+        position: absolute;
+        bottom: 0.5rem;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: -999;
+        font-size: var(--fs-300);
+        text-align: center;
+        & a {
+            color: hsl(228, 45%, 44%);
+        }
+    }
+}
+
+@layer utilities {
+    .flex {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .flow > *:where(:not(:first-child)) {
+        margin-block-start: 1rem;
+    }
+
+    .bg-primary-400 {
+        background-color: var(--clr-primary-400);
+    }
+
+    .bg-secondary-400 {
+        background-color: hsl(var(--clr-secondary-400));
+    }
+
+    .bg-secondary-500 {
+        background-color: var(--clr-secondary-500);
+    }
+
+    .bg-neutral-100 {
+        background-color: var(--clr-neutral-100);
+    }
+
+    .text-primary-50 {
+        color: var(--clr-primary-50);
+    }
+
+    .text-secondary-400 {
+        color: hsl(var(--clr-secondary-400));
+    }
+
+    .text-neutral-100 {
+        color: var(--clr-neutral-100);
+    }
+
+    .text-neutral-200 {
+        color: var(--clr-neutral-200);
+    }
+
+    .text-neutral-300 {
+        color: var(--clr-neutral-300);
+    }
+
+    .text-neutral-400 {
+        color: var(--clr-neutral-400);
+    }
+
+    .border-primary-300 {
+        border: 2px solid var(--clr-primary-300);
+    }
+
+    .border-primary-400 {
+        border: 2px solid var(--clr-primary-400);
+    }
+
+    .border-primary- .visually-hidden:not(:focus):not(:active) {
+        clip: rect(0 0 0 0);
+        clip-path: inset(50%);
+        height: 1px;
+        overflow: hidden;
+        position: absolute;
+        white-space: nowrap;
+        width: 1px;
+    }
+}
