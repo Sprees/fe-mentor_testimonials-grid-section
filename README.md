@@ -28,7 +28,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Frontend Mentor Solution](https://your-solution-url.com)
+- Solution URL: [Frontend Mentor Solution](https://www.frontendmentor.io/solutions/testimonials-grid-section-css-grid-css-variables-css-nesting-lLe_sAivNo)
 - Live Site URL: [Github Pages](https://sprees.github.io/fe-mentor_testimonials-grid-section/)
 
 ## My process
