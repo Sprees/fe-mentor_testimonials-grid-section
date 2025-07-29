@@ -128,7 +128,7 @@
         --clr-neutral-400: hsl(224, 10%, 45%);
 
         --clr-black: hsl(0, 0%, 7%);
-        --clr-box-shadow: hsl(217, 19%, 35%);
+        --clr-attribution: hsl(228, 45%, 44%);
 
         --fs-300: 0.6875rem; /* 11px */
         --fs-400: 0.8125rem; /* 13px */
@@ -223,13 +223,13 @@
             line-height: var(--lh-110);
         }
 
-        & > p {
+        & > p:first-of-type {
             font-family: 'Barlow Semi Condensed SemiBold', sans-serif;
             font-size: var(--fs-700);
             line-height: var(--lh-120);
         }
 
-        & blockquote {
+        & > p:last-of-type {
             line-height: var(--lh-140);
         }
 
@@ -272,7 +272,7 @@
         font-size: var(--fs-300);
         text-align: center;
         & a {
-            color: hsl(228, 45%, 44%);
+            color: var(--clr-attribution);
         }
     }
 }
